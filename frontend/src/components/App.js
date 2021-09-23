@@ -1,5 +1,7 @@
 import React from 'react';
 import Login from './Login';
+import Dashboard from './Dashboard';
+import Logout from './Logout';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +21,9 @@ const App = () => {
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
           </ul>
         </nav>
 
@@ -26,7 +31,12 @@ const App = () => {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path="/dashboard"></Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/logout">
+            <Logout />
+          </Route>
         </Switch>
       </div>
     </Router>
