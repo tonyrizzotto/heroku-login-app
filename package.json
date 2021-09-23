@@ -1,0 +1,33 @@
+{
+  "name": "heroku-login-app",
+  "version": "1.0.0",
+  "description": "A simple MERN login application deployed through Heroku.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "heroku",
+    "MERN",
+    "node",
+    "react"
+  ],
+  "author": "Tony Rizzotto",
+  "license": "MIT",
+  "engines": {
+    "node": "14.15.1"
+  },
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "google-auth-library": "^7.9.2",
+    "mongoose": "^6.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

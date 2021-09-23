@@ -1,0 +1,5 @@
+# Remove Node Modules
+node_modules
+
+# Do not include Configuration variables
+backend/config/config.env
