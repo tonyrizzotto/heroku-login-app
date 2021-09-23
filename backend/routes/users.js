@@ -38,9 +38,11 @@ router.post('/api/v1/auth/google', async (req, res) => {
 
   try {
     //try to insert a user to the DB
-    await user.save();
+    //await user.save();
 
     //if successful, attach to an active session
+    req.session.user = user;
+    console.log(req.session);
 
     res.status(201).send({ user });
   } catch (error) {

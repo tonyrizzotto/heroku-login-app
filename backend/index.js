@@ -3,6 +3,10 @@ const connectDB = require('./config/db.js');
 const dotenv = require('dotenv');
 const userRouter = require('./routes/users');
 
+// Imports needed to create a session and save to the DB
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 // Configure Environment Variables
 dotenv.config({ path: './backend/config/config.env' });
 
@@ -13,7 +17,23 @@ const PORT = process.env.PORT;
 // Connect to MongoDB
 connectDB();
 
-// Initialize User Route
+// Create a session when the API first receives a request. Will follow the user till expiration.
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+    }),
+    cookie: {
+      httpOnly: false,
+      // length of time is in Milliseconds: 300000 = 5 minutes
+      maxAge: parseInt(process.env.SESSION_MAX_AGE),
+    },
+  })
+);
+// Initialize User Routes
 app.use(userRouter);
 
 // Run App on desired port
