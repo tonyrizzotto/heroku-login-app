@@ -3,6 +3,7 @@ const express = require('express');
 const router = new express.Router(); // creates a new router
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
+const verifyAuth = require('../middleware/verifyAuth');
 
 // set up a new Google client
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -11,15 +12,10 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 router.use(express.json());
 
 // User Endpoint - GET /api/user
-router.get('/api/user', (req, res) => {
-  if (!req.session.user) {
-    res.send({ status: false });
-    return;
-  }
+router.get('/api/user', verifyAuth, async (req, res) => {
+  const { user } = req.session;
 
-  const user = req.session.user;
-
-  res.send({ user });
+  res.status(200).send({ user });
 });
 
 // Google JWT Verification   POST
@@ -60,7 +56,7 @@ router.post('/api/v1/auth/google', async (req, res) => {
 });
 
 // Logout Endpoint  POST
-router.post('/api/logout', () => {
+router.get('/api/logout', (req, res) => {
   req.session.destroy(() => {
     res.status(200).send({ status: true });
   });
