@@ -19,7 +19,9 @@ const Login = () => {
     await fetch('/api/v1/auth/google', options)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.created) {
+          window.location.href = 'http://localhost:3000/dashboard';
+        }
       });
   };
   return (
