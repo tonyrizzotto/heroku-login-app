@@ -21,7 +21,7 @@ const Dashboard = () => {
         });
     };
     getUser();
-  }, [user]);
+  }, []);
   return (
     <div id="dashboard">
       <div id="content" style={{ display: 'none' }}>
