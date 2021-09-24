@@ -1,15 +1,39 @@
+/* ==========================================================================
+   #BOX-SIZING
+   ========================================================================== */
+/**
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
 body {
-  background: #0f2027; /* fallback for old browsers */
+  background: #7b9499; /* fallback for old browsers */
   background: -webkit-linear-gradient(
-    to left,
-    #2c5364,
-    #203a43,
-    #0f2027
+    to bottom,
+    #2a99aa,
+    #7b9499
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
-    to left,
-    #2c5364,
-    #203a43,
-    #0f2027
+    to bottom,
+    #2a99aa,
+    #7b9499
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

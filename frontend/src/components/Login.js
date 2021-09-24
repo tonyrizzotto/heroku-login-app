@@ -28,26 +28,34 @@ const Login = () => {
   return (
     <div id="wrapper">
       <div className="container">
-        <div className="image-container">
-          <img src="/images/vertical.jpg" alt="vertical" />
-        </div>
+        <div className="image-container"></div>
         <div className="form-container">
           <form>
-            <input
-              type="text"
-              name="first-name"
-              placeholder="Your First Name"
-            />
+            <div className="input">
+              <input
+                type="text"
+                name="first-name"
+                placeholder="Your First Name"
+              />
+            </div>
+            <div className="input">
+              <input
+                type="text"
+                name="last-name"
+                placeholder="Your Last Name"
+              />
+            </div>
+            <div className="input">
+              <input type="email" name="email" placeholder="Your Email" />
+            </div>
+            <div className="input">
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter a Password"
+              />
+            </div>
 
-            <input type="text" name="last-name" placeholder="Your Last Name" />
-
-            <input type="email" name="email" placeholder="Your Email" />
-
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter a Password"
-            />
             <button type="submit">Submit</button>
 
             {/* Google Account Button */}

@@ -1,69 +1,90 @@
 #wrapper {
+  min-height: 100vh;
+  max-width: 780px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  margin: 10%;
 }
-
 .container {
-  width: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  background-color: black;
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background: #000;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.55);
+  width: 100%;
+  display: table;
 }
 .image-container {
-  width: 500px;
   height: 500px;
+  border-radius: 10px;
+  background: url('../images/vertical.jpg') center/cover no-repeat;
+  display: table-cell;
+  width: 50%;
 }
-.image-container img {
-  max-height: 100%;
-  border-radius: 25px 0 0 25px;
-}
-
 .form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 2rem;
+  padding: 57px 65px;
+  display: table-cell;
 }
-.form-container,
+
 .form-container form {
-  height: 100%;
-  width: 100%;
+  display: block;
 }
 
-.form-container form input {
-  width: 100%;
-  margin-bottom: 5vh;
-  border-right: none;
-  border-top: none;
-  border-left: none;
-  background-color: transparent;
+form .input {
+  position: relative;
+  margin-bottom: 33px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.input input {
+  padding: 5px 0;
+  font-size: 16px;
+  color: #ccc;
+  background: transparent;
   outline: none;
-  color: white;
-  caret-color: white;
-}
-
-.form-container form input::placeholder {
-  text-align: center;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-}
-
-.form-container form button[type='submit'] {
-  background: rgb(56, 196, 13);
-  width: 65%;
-  padding: 2vh;
+  margin: 0;
   border: none;
+  box-shadow: none;
+  --webkit-box-shadow: none;
+  --mox-box-shadow: none;
+  width: 100%;
+}
+
+button[type='submit'] {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  outline: none;
+  border: none;
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 30px;
+  background-color: #0fa022;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 10px 10px;
-  color: white;
+  margin-bottom: 20px;
+  width: 183px;
+  transition: background-color ease 0.6s, transform ease 0.8s;
+}
+
+button[type='submit']:hover {
+  transform: scale(1.02);
+  background-color: #03bb1c;
+}
+
+@media (max-width: 767px) {
+  .container {
+    display: block;
+    width: 90%;
+  }
+  .image-container,
+  .form-container {
+    display: block;
+    width: 100%;
+  }
+  .image-container {
+    height: 200px;
+  }
 }
