@@ -39,7 +39,7 @@ app.use(userRouter);
 // Check Environment Variable
 if (process.env.NODE_ENV === 'production') {
   //add the build folder to the application
-  app.use(express.static('./frontend/build'));
+  app.use(express.static('frontend/build'));
 }
 
 // Run App on desired port
