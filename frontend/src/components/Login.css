@@ -19,7 +19,7 @@
 }
 .image-container {
   height: 500px;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   background: url('../images/vertical.jpg') center/cover no-repeat;
   display: table-cell;
   width: 50%;
@@ -84,6 +84,9 @@ button[type='submit']:hover {
   .container {
     display: block;
     width: 90%;
+  }
+  .image-container {
+    border-radius: 10px 10px 0 0;
   }
   .image-container,
   .form-container {
