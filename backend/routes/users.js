@@ -1,9 +1,9 @@
-const { Router } = require('express');
 const express = require('express');
 const router = new express.Router(); // creates a new router
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const verifyAuth = require('../middleware/verifyAuth');
+const bcrypt = require('bcryptjs');
 
 // set up a new Google client
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -14,8 +14,16 @@ router.use(express.json());
 // User Endpoint - GET /api/user
 router.get('/api/user', verifyAuth, async (req, res) => {
   const { user } = req.session;
-
   res.status(200).send({ user });
+});
+
+// Create User Endpoint   POST /api/user
+router.post('/api/user', async (req, res) => {
+  const user = req.body;
+  //hash password
+  user.password = await bcrypt.hash(user.password, 8);
+  req.session.user = user;
+  res.status(201).send({ created: true });
 });
 
 // Google JWT Verification   POST
@@ -61,5 +69,6 @@ router.get('/api/logout', (req, res) => {
     res.status(200).send({ status: true });
   });
 });
+
 // export router for use
 module.exports = router;

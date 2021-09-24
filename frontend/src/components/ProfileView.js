@@ -7,7 +7,14 @@ const ProfileView = (props) => {
     <div className="card">
       <div className="left-side">
         <div className="profile-image">
-          <img src={props.user.imageUrl} alt={props.user.firstName} />
+          <img
+            src={
+              !props.user.imageUrl
+                ? `https://fakeimg.pl/96x96/?text=Your Image!`
+                : props.user.imageUrl
+            }
+            alt={props.user.firstName}
+          />
         </div>
       </div>
       <div className="right-side">

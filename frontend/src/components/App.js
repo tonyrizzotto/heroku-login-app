@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import Logout from './Logout';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +11,14 @@ import {
 import './App.css';
 
 const App = () => {
+  // destory the user and user session
+  const logout = async () => {
+    await fetch('/api/logout')
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = '/';
+      });
+  };
   return (
     <Router>
       <div>
@@ -19,7 +27,7 @@ const App = () => {
 
           <ul className="nav-links">
             <input type="checkbox" id="checkbox_toggle" />
-            <label for="checkbox_toggle" class="hamburger">
+            <label htmlFor="checkbox_toggle" className="hamburger">
               &#9776;
             </label>
             <div className="menu">
@@ -30,7 +38,15 @@ const App = () => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link to="/logout">Logout</Link>
+                {/* <Link to="/logout">Logout</Link> */}
+                <a
+                  href="/"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  Logout
+                </a>
               </li>
             </div>
           </ul>
@@ -42,9 +58,6 @@ const App = () => {
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route exact path="/logout">
-            <Logout />
           </Route>
         </Switch>
       </div>
