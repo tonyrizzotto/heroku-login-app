@@ -4,6 +4,10 @@
   "description": "A simple MERN login application deployed through Heroku.",
   "main": "index.js",
   "scripts": {
+    "start": "node backend/index.js",
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "heroku-postbuild": "npm un install-client && npm run build",
     "dev": "nodemon backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
