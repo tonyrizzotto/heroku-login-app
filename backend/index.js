@@ -39,9 +39,9 @@ app.use(
 );
 
 //set Home Route
-app.get('/*', async (req, res, next) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
-});
+// app.get('/*', async (req, res, next) => {
+//   res.sendFile(path.join(buildPath, 'index.html'));
+// });
 // Initialize User Routes
 app.use(userRouter);
 
