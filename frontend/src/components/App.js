@@ -15,7 +15,7 @@ const App = () => {
     await fetch('/api/logout')
       .then((res) => res.json())
       .then((data) => {
-        window.location.href = '/';
+        return data;
       });
   };
   return (
@@ -37,7 +37,6 @@ const App = () => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
-                {/* <Link to="/logout">Logout</Link> */}
                 <a
                   href="/"
                   onClick={() => {
@@ -52,12 +51,9 @@ const App = () => {
         </nav>
 
         <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
+          <Route exact path="/" component={Login} />
+
+          <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     </Router>

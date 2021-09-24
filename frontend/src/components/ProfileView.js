@@ -2,7 +2,6 @@ import React from 'react';
 import './ProfileView.css';
 
 const ProfileView = (props) => {
-  console.log(props);
   return (
     <div className="card">
       <div className="left-side">
