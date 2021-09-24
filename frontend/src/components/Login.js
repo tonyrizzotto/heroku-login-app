@@ -28,7 +28,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.created) {
-          window.location.href = 'http://localhost:3000/dashboard';
+          window.location.href = '/dashboard';
         }
       });
   };
