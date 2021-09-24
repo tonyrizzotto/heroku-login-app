@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
+import './Login.css';
 
 const Login = () => {
   // request Credentials from Google
@@ -25,36 +26,43 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <form>
-        <label htmlFor="first-name">First Name</label>
-        <input type="text" name="first-name" placeholder="Your First Name" />
-
-        <label htmlFor="first-name">Last Name</label>
-        <input type="text" name="last-name" placeholder="Your Last Name" />
-
-        <label htmlFor="email">Email</label>
-        <input type="email" name="email" placeholder="Your Email" />
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter a Password"
-        />
-        <button type="submit">Submit</button>
-
-        {/* Google Account Button */}
-        <div>
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText="Sign up with Google"
-            onSuccess={requestCredentials}
-            onFailure={requestCredentials}
-            cookiePolicy={'single_host_origin'}
-          />
+    <div id="wrapper">
+      <div className="container">
+        <div className="image-container">
+          <img src="/images/vertical.jpg" alt="vertical" />
         </div>
-      </form>
+        <div className="form-container">
+          <form>
+            <input
+              type="text"
+              name="first-name"
+              placeholder="Your First Name"
+            />
+
+            <input type="text" name="last-name" placeholder="Your Last Name" />
+
+            <input type="email" name="email" placeholder="Your Email" />
+
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter a Password"
+            />
+            <button type="submit">Submit</button>
+
+            {/* Google Account Button */}
+            <div>
+              <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Sign up with Google"
+                onSuccess={requestCredentials}
+                onFailure={requestCredentials}
+                cookiePolicy={'single_host_origin'}
+              />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

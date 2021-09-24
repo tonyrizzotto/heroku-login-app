@@ -1,0 +1,69 @@
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 10%;
+}
+
+.container {
+  width: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: black;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.image-container {
+  width: 500px;
+  height: 500px;
+}
+.image-container img {
+  max-height: 100%;
+  border-radius: 25px 0 0 25px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2rem;
+}
+.form-container,
+.form-container form {
+  height: 100%;
+  width: 100%;
+}
+
+.form-container form input {
+  width: 100%;
+  margin-bottom: 5vh;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  caret-color: white;
+}
+
+.form-container form input::placeholder {
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-container form button[type='submit'] {
+  background: rgb(56, 196, 13);
+  width: 65%;
+  padding: 2vh;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px 10px;
+  color: white;
+}
