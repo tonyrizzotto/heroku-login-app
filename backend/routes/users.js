@@ -3,6 +3,7 @@ const router = new express.Router(); // creates a new router
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const verifyAuth = require('../middleware/verifyAuth');
+const path = require('path');
 const bcrypt = require('bcryptjs');
 
 // set up a new Google client
