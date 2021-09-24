@@ -25,6 +25,7 @@ html {
 }
 
 body {
+  height: 100vh;
   background: #7b9499; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,

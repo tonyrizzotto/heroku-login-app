@@ -1,0 +1,52 @@
+.card {
+  font-family: sans-serif;
+  width: 450px;
+  height: 250px;
+  background-color: #fff;
+  background: linear-gradient(#f8f8f8, #fff);
+  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  position: relative;
+  /* overflow: hidden; */
+  margin: 1.5rem;
+}
+
+.card h1 {
+  text-align: center;
+}
+
+.left-side {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#92bca6, #a2ccb6);
+  width: 150px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.left-side img {
+  border-radius: 50px;
+}
+
+.right-side {
+  width: 300px;
+  float: left;
+  position: absolute;
+  top: 5%;
+  left: 150px;
+  height: 100%;
+  padding: 8px;
+}
+
+.right-side p {
+  margin: 10px 0;
+  font-style: italic;
+  text-align: justify;
+}
+
+.user-email {
+  margin-top: 20px;
+}
