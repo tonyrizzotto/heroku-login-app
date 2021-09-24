@@ -19,11 +19,25 @@ router.get('/api/user', verifyAuth, async (req, res) => {
 
 // Create User Endpoint   POST /api/user
 router.post('/api/user', async (req, res) => {
-  const user = req.body;
+  const data = req.body;
   //hash password
-  user.password = await bcrypt.hash(user.password, 8);
-  req.session.user = user;
-  res.status(201).send({ created: true });
+  data.password = await bcrypt.hash(data.password, 8);
+  // create a new user to insert
+  const user = new User({
+    firstName: data.firstName,
+    lastName: data.lastName,
+    email: data.email,
+    password: data.password,
+  });
+
+  try {
+    // await user.save();
+    //attach to session
+    req.session.user = user;
+    res.status(201).send({ created: true });
+  } catch (error) {
+    res.status(400).send();
+  }
 });
 
 // Google JWT Verification   POST

@@ -1,7 +1,6 @@
 import React from 'react';
 import Login from './Login';
 import Dashboard from './Dashboard';
-
 import {
   BrowserRouter as Router,
   Switch,
