@@ -30,6 +30,7 @@ const Login = () => {
       <div className="container">
         <div className="image-container"></div>
         <div className="form-container">
+          <h2>Registration</h2>
           <form>
             <div className="input">
               <input

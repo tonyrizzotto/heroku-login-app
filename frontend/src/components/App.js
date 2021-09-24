@@ -8,22 +8,31 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
+import './App.css';
 
 const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/logout">Logout</Link>
-            </li>
+        <nav className="navbar">
+          <div className="logo">Login Here</div>
+
+          <ul className="nav-links">
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">
+              &#9776;
+            </label>
+            <div className="menu">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+            </div>
           </ul>
         </nav>
 
