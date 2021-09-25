@@ -14,7 +14,6 @@ const Dashboard = () => {
             document.getElementById('dashboard').innerText = data.error;
             return;
           } else {
-            console.log(data);
             setUser(data.user);
             document.getElementById('content').style.display = 'block';
           }

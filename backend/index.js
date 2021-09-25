@@ -38,18 +38,18 @@ app.use(
   })
 );
 
-// Initialize User Routes
-app.use(userRouter);
-
 // Check Environment Variable
 if (process.env.NODE_ENV === 'production') {
   //add the build folder to the application
   app.use(express.static('frontend/build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname), 'frontend', 'build', 'index.html');
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname), 'frontend/build/index.html');
   });
 }
+
+// Initialize User Routes
+app.use(userRouter);
 
 // Run App on desired port
 app.listen(PORT, () => {

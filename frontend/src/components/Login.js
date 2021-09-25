@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import './Login.css';
 
@@ -8,6 +9,9 @@ const Login = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // initialize history hook
+  const history = useHistory();
 
   // Send user input data to API
   const handleSubmit = async () => {
@@ -28,7 +32,6 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.created) {
-          window.location.href = '/dashboard';
         }
       });
   };
@@ -51,7 +54,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.created) {
-          window.location.href = '/dashboard';
+          history.push('/dashboard');
         }
       });
   };

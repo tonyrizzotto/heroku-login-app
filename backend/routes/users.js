@@ -3,7 +3,7 @@ const router = new express.Router(); // creates a new router
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/user');
 const verifyAuth = require('../middleware/verifyAuth');
-const path = require('path');
+// const path = require('path');
 const bcrypt = require('bcryptjs');
 
 // set up a new Google client
@@ -14,8 +14,12 @@ router.use(express.json());
 
 // User Endpoint - GET /api/user
 router.get('/api/user', verifyAuth, async (req, res) => {
-  const { user } = req.session;
-  res.status(200).send({ user });
+  try {
+    const { user } = req.session;
+    res.status(200).send({ user });
+  } catch (err) {
+    res.status(400).send();
+  }
 });
 
 // Create User Endpoint   POST /api/user
@@ -46,32 +50,33 @@ router.post('/api/v1/auth/google', async (req, res) => {
   // get the JWT from the request
   const { token } = req.body;
 
-  // verify the Google JWT is valid
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  });
-
-  // save data in a variable
-  const payload = ticket.getPayload();
-
-  // create a new user to insert
-  const user = new User({
-    firstName: payload.given_name,
-    lastName: payload.family_name,
-    email: payload.email,
-    imageUrl: payload.picture,
-  });
-
   try {
+    // verify the Google JWT is valid
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    // save data in a variable
+    const payload = ticket.getPayload();
+
+    // create a new user to insert
+    const user = new User({
+      firstName: payload.given_name,
+      lastName: payload.family_name,
+      email: payload.email,
+      imageUrl: payload.picture,
+    });
+
     //try to insert a user to the DB
     //await user.save();
 
     //if successful, attach to an active session
     req.session.user = user;
 
+    console.log(req.session);
     // send status back to the client
-    res.status(201).send({ created: true });
+    res.status(201).json({ created: true });
   } catch (error) {
     // send an error
     res.status(400).send(error);
