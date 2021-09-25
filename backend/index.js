@@ -19,7 +19,7 @@ const PORT = process.env.PORT;
 connectDB();
 
 // Create a build variable
-const buildPath = path.normalize(path.join(__dirname, '../frontend/build'));
+//const buildPath = path.normalize(path.join(__dirname, '../frontend/build'));
 
 // Create a session when the API first receives a request. Will follow the user till expiration.
 app.use(
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
 
   app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(buildPath));
+    res.sendFile(path.join(__dirname, '../frontend/build'));
   });
 }
 
