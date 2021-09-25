@@ -7,12 +7,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      fetch('api/user')
+      await fetch('api/user')
         .then((res) => res.json())
         .then((data) => {
           if (!data.user) {
-            document.getElementById('dashboard').innerText = data.error;
-            return;
+            console.log(data);
+            document.getElementById(
+              'dashboard'
+            ).innerHTML = `<h2>${data.error}</h2>`;
           } else {
             setUser(data.user);
             document.getElementById('content').style.display = 'block';

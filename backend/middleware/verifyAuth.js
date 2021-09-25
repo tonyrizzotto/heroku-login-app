@@ -7,7 +7,7 @@ const verifyAuth = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    res.status(401).send({ error: 'Please Authenticate.' });
+    res.status(401).send({ error: 'Unauthorized' });
   }
 };
 

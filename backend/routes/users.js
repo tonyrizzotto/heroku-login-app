@@ -18,7 +18,7 @@ router.get('/api/user', verifyAuth, async (req, res) => {
     const { user } = req.session;
     res.status(200).send({ user });
   } catch (err) {
-    res.status(400).send();
+    res.status(401).send();
   }
 });
 
@@ -41,7 +41,7 @@ router.post('/api/user', async (req, res) => {
     req.session.user = user;
     res.status(201).send({ created: true });
   } catch (error) {
-    res.status(400).send();
+    res.status(401).json({ error });
   }
 });
 
@@ -79,14 +79,14 @@ router.post('/api/v1/auth/google', async (req, res) => {
     res.status(201).json({ created: true });
   } catch (error) {
     // send an error
-    res.status(400).send(error);
+    res.status(401).send(error);
   }
 });
 
 // Logout Endpoint  POST
 router.get('/api/logout', (req, res) => {
   req.session.destroy(() => {
-    res.status(200).send({ status: true });
+    res.status(200).send();
   });
 });
 

@@ -6,16 +6,18 @@ import {
   Switch,
   Link,
   Route,
+  useHistory,
 } from 'react-router-dom';
 import './App.css';
 
 const App = () => {
+  const history = useHistory();
   // destory the user and user session
   const logout = async () => {
     await fetch('/api/logout')
       .then((res) => res.json())
       .then((data) => {
-        return data;
+        history.push('/');
       });
   };
   return (
