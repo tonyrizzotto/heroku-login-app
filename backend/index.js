@@ -44,12 +44,25 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
 
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build'));
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build'));
+  });
+
+  app.get('/dashboard', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    );
   });
 }
 
 // Initialize User Routes
 app.use(userRouter);
+
+// Catch all for bad routes
+app.use((req, res) => {
+  res.type('text/plain');
+  res.status(404);
+  res.send('Page not found.');
+});
 
 // Run App on desired port
 app.listen(PORT, () => {

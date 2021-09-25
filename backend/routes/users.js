@@ -74,7 +74,6 @@ router.post('/api/v1/auth/google', async (req, res) => {
     //if successful, attach to an active session
     req.session.user = user;
 
-    console.log(req.session);
     // send status back to the client
     res.status(201).json({ created: true });
   } catch (error) {
