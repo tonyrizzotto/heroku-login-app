@@ -133,6 +133,6 @@ At this point you can run in production through your root folder:
 npm run dev
 ```
 
-The project will not be running at `http://localhost:5000`
+The project will now be running at `http://localhost:5000`
 
 Enjoy!
