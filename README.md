@@ -2,8 +2,6 @@
 
 # Fullstack MERN Login App
 
-## [Deployed on Heroku](https://morning-temple-84192.herokuapp.com/)
-
 ### Overview
 
 The project is a robust Login system created to show proper use of Google OAuth2.0 as well as session management. This project utilizes the MERN technology stack, which includes:
